@@ -5,29 +5,26 @@ from flask_socketio import SocketIO, emit
 app = Flask(__name__, static_folder='./templates', template_folder='./templates')
 
 app.config[ 'SECRET_KEY' ] = 'chonayrandomstring:lalalalalalalalala';
-socketio = SocketIO(app);
+socketio = SocketIO(app, cors_allowed_origins="*");
 
 # Cac route chinh
 @app.route('/login')
 def index_login():
-  return render_template( '/login/index.html' )
+  return render_template('/login/index.html')
 
 @app.route('/info')
 def index_info():
-  return render_template( '/members/index.html' )
-
-@app.route('/404')
-def index_404():
-  return render_template( '/404/index.html' )
+  return render_template('/members/index.html')
 
 @app.errorhandler(404)
-def page_not_found():
-    socketio.emit('error','404')
+def page_not_found(e):
+  socketio.emit('error', '404')
+  return render_template('/404/index.html'), 404
 
 # Khi co user connect toi Server
 @socketio.on('conn')
 def handle_login(json):
-    print('Received: ' + str(json))
+  print('Received: ' + str(json))
 
 # Khi user send form login
 @socketio.on('login')
