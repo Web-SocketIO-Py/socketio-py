@@ -105,7 +105,7 @@ form{
 }
 
 .input-div.pass{
-	margin-bottom: 4px;
+	margin-bottom: 15px;
 }
 
 a{
@@ -115,6 +115,13 @@ a{
 	color: #999;
 	font-size: 0.9rem;
 	transition: .3s;
+}
+
+form > span{
+	color: red;
+	font-size: .8rem;
+	font-style: italic;
+	display: none;
 }
 
 a:hover{

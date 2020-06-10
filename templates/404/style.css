@@ -1,37 +1,26 @@
 *{
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body{
     font-family: sans-serif;
-    height: 100%;
 }
 
-html {
-    background-image: no-repeat center top fixed;
-    background-image: url('/static/404/imgs/404.png');
-    background-size: 50% 50%;
-    transition: .5s;
+.container{
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    text-align: center;
 }
 
-@media screen and (max-width: 1050px){
-	html{
-        background-size: 60% 50%;
-        transition: .5s;
-	}
+.title{
+    font-size: 5rem;
+    padding: 5% 5% 0 5%;
+    margin-top: 10%;
 }
 
-@media screen and (max-width: 1000px){
-	html{
-        background-size: 70% 50%;
-        transition: .5s;
-	}
-}
-
-@media screen and (max-width: 900px){
-	html{
-        background-size: 90% 50%;
-        transition: .5s;
-	}
+.decription{
+    height: 50%;
+    font-style: italic;
 }

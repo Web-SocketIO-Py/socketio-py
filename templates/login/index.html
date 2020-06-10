@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='./login/style.css') }}">
+	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='login/style.css') }}">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -30,7 +30,8 @@
            		   <div class="div">
            		    	<input type="password" class="input password" placeholder="Password">
             	   </div>
-            	</div>
+				</div>
+				<span id="err">Username or password is incorrect</span>
             	<input type="submit" class="btn" value="Login">
             </form>
         </div>
@@ -56,8 +57,20 @@
 		});
 
 		socket.on('redirect', function(data){
-			window.location = `http://${document.domain}:${location.port}/${data}`;
+			if(data == 'login'){
+				$('#err').css("display", "block");
+				$('.user-name').val('');
+				$('.password').val('');
+
+			}else{
+				window.location = `http://${document.domain}:${location.port}/${data}`;
+			}
 		});
+
+		socket.on('error', function(data){
+			alert(data)
+			window.location = `http://${document.domain}:${location.port}/${data}`;
+		})
 
 	</script>
 </body>

@@ -20,6 +20,10 @@ def index_info():
 def index_404():
   return render_template( '/404/index.html' )
 
+@app.errorhandler(404)
+def page_not_found():
+    socketio.emit('error','404')
+
 # Khi co user connect toi Server
 @socketio.on('conn')
 def handle_login(json):
